@@ -57,3 +57,9 @@ User.init(
     timestamps: false,
   }
 );
+
+export const findUserByEmail = async (email: string): Promise<User | null> => {
+  return await User.findOne({
+    where: { email }
+  });
+}

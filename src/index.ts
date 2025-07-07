@@ -3,6 +3,7 @@ import * as dotenv from "dotenv";
 import sequelize from "./config/database";
 import { setupSwagger } from "./config/swagger";
 import userRoutes from "./routes/UserRoutes";
+import authRoutes from "./routes/authRoutes";
 
 dotenv.config();
 
@@ -10,6 +11,7 @@ const app = express();
 app.use(express.json());
 
 app.use(userRoutes);
+app.use(authRoutes);
 
 setupSwagger(app);
 
