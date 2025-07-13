@@ -61,6 +61,10 @@ router.post("/users/", (request, response) => {UserController.createUser(request
  *        description: Usuário não encontrado.
  *      500:
  *        description: Erro no servidor.
+ *      401:
+ *        description: Não autorizado.
+ *    security:
+ *      - bearerAuth: []
 */
 router.get("/users/:id", authenticate, (request, response) => {UserController.getUserById(request, response)});
 
@@ -82,6 +86,10 @@ router.get("/users/:id", authenticate, (request, response) => {UserController.ge
  *                $ref: '#/components/schemas/UserResponse'
  *      500:
  *        description: Erro no servidor.
+ *      401:
+ *        description: Não autorizado.
+ *    security:
+ *      - bearerAuth: []
 */
 router.get("/users/", authenticate, (_, response) => {UserController.getAllUsers(response)});
 
@@ -116,6 +124,10 @@ router.get("/users/", authenticate, (_, response) => {UserController.getAllUsers
  *        description: Usuário não encontrado.
  *      500:
  *        description: Erro no servidor.
+ *      401:
+ *        description: Não autorizado.
+ *    security:
+ *      - bearerAuth: []
 */
 router.put("/users/:id", authenticate, authorizeUser, (request, response) => {UserController.updateUser(request, response)});
 
@@ -141,6 +153,10 @@ router.put("/users/:id", authenticate, authorizeUser, (request, response) => {Us
  *        description: Usuário não encontrado.
  *      500:
  *        description: Erro no servidor.
+ *      401:
+ *        description: Não autorizado.
+ *    security:
+ *      - bearerAuth: []
 */
 router.delete("/users/:id", authenticate, authorizeUser, (request, response) => {UserController.deleteUser(request, response)});
 

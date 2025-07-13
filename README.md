@@ -46,7 +46,7 @@ you can access swagger-ui in http://localhost:3000/api-docs/
 
 1. create user
 ```
-curl -X POST "http://localhost:3000" \
+curl -X POST "http://localhost:3000/users" \
 -H "Content-Type: application/json" \
 -d '{"name": "João Matheus", "email": "joaomatheus@gmail.com", "password": "12345678Jm!"}'
 ```
