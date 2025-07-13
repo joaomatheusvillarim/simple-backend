@@ -1,12 +1,13 @@
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import { Express } from "express";
+import { SwaggerTheme, SwaggerThemeNameEnum } from "swagger-themes";
 
 const options: swaggerJSDoc.Options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "FreeLog",
+      title: "Simple Backend",
       version: "1.0.0",
       description: "",
     },
@@ -76,6 +77,12 @@ const options: swaggerJSDoc.Options = {
 
 const swaggerSpec = swaggerJSDoc(options);
 
+const theme = new SwaggerTheme();
+const swaggerOptions = {
+  explorer: true,
+  customCss: theme.getBuffer(SwaggerThemeNameEnum.DARK)
+};
+
 export function setupSwagger(app: Express) {
-  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, swaggerOptions));
 }
